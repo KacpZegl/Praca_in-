@@ -28,12 +28,10 @@ reader = SimpleMFRC522()
 # Define LED strip control functions
 def run_red():
     subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_strip_red.py"])
-    asyncio.run(send_message("red"))
 
 def run_green():
     subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_strip_green.py"])
-    asyncio.run(send_message("green"))
-    
+
 # Define QR code decoding function
 def decode_qr_code(image):
     cv2.namedWindow("Output", cv2.WINDOW_NORMAL) 
@@ -53,10 +51,7 @@ def decode_qr_code(image):
     
     return False  # return False if no valid QR code was found
 
-# Define websocket communication function
-async def send_message(message):
-    async with websockets.connect('ws://localhost:8000') as websocket:
-        await websocket.send(message)
+
 
 # Main loop
 try:

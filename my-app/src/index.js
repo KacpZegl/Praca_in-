@@ -23,7 +23,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 
   // Listen for IPC messages from the renderer process
   ipcMain.on('some-message', (event, arg) => {
@@ -35,7 +35,7 @@ const createWindow = () => {
   rfid_process.stdout.on('data', (data) => {
   // HERE IS THE MESSAGE FROM PYTHON 
     const response = data.toString();
-    console.log("to jeszcze z indexu:", response);
+    console.log("index.js:", response);
     mainWindow.webContents.send('python-data', response);
   });
 

@@ -6,7 +6,6 @@ import RPi.GPIO as GPIO
 from mfrc522 import SimpleMFRC522
 import subprocess
 import sys
-import json
 
 # Constants
 QR_RESOLUTION = 6
@@ -29,31 +28,31 @@ reader = SimpleMFRC522()
 
 # Define LED strip control functions
 def run_red():
-    data = "NOTcorrect"
+    # data = "NOTcorrect"
     subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_strip_red.py"])
     subprocess.Popen(['electron', 'path/to/main.js'], stdin=subprocess.PIPE)
-    sys.stdout.write(data)
-    sys.stdout.flush()
+    # sys.stdout.write(data)
+    # sys.stdout.flush()
 
 def run_green():
     data = "correct"
-    subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_strip_green.py"])
-    subprocess.Popen(['electron', 'path/to/main.js'], stdin=subprocess.PIPE)
     sys.stdout.write(data)
     sys.stdout.flush()
+    subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_strip_green.py"])
+    subprocess.Popen(['electron', 'path/to/main.js'], stdin=subprocess.PIPE)
 
 # Define QR code decoding function
 def decode_qr_code(image):
-    cv2.namedWindow("Output", cv2.WINDOW_NORMAL) 
+    #cv2.namedWindow("Output", cv2.WINDOW_NORMAL) 
     barcodes = pyzbar.decode(image)
     # print('reading...', end='\r')
     rotated = cv2.rotate(image, cv2.ROTATE_180)
-    cv2.imshow("Output", rotated)
+    #cv2.imshow("Output", rotated)
     cv2.waitKey(1)
     
     for barcode in barcodes:
         barcodeData = barcode.data.decode()
-        barcodeType = barcode.type
+        # barcodeType = barcode.type
         # print("["+str(datetime.now())+"] Type:{} | Data: {}".format(barcodeType, barcodeData))
         time.sleep(2)
         if barcodeData == NAME_TO_SCAN:
@@ -68,13 +67,13 @@ try:
     while True:
         # Read RFID card
         id, text = reader.read()
-        print(id, " : ", text)
+        print(id, ":", text)
         sys.stdout.flush()
         time.sleep(0.3)
         
         if id == CARD_ID:
             # Ask for QR code 
-            data = "Scan QR code"
+            data = "scan-qr"
            # subprocess.Popen(['electron', 'path/to/main.js'], stdin=subprocess.PIPE)
             sys.stdout.write(data)
             sys.stdout.flush()

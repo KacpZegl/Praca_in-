@@ -25,13 +25,43 @@ function Update() {
 
 }
 
+
+const noAccessElement = document.querySelector('#no-access');
+const scanQRElement = document.querySelector('#scan-qr');
+const AccessElement = document.querySelector('#access');
+
 window.addEventListener('message', (event) => {
     if (event.data.type === 'python-data') {
       const data = event.data.data;
-      console.log(data);
       // do something with the data...
+        if (data ===  "NOTcorrect"){
+            // Display the element
+            noAccessElement.style.display = 'block';
+            // Hide the element after 10 seconds
+            setTimeout(function() {
+                noAccessElement.style.display = 'none';
+            }, 5000);
+        }
+        else if (data === "scan-qr"){
+            scanQRElement.style.display = 'block';
+            // Hide the element after 10 seconds
+            setTimeout(function() {
+                scanQRElement.style.display = 'none';
+            }, 20000);
+        }
+        else if (data === "correct"){
+            scanQRElement.style.display = 'none';
+            AccessElement.style.display = 'block';
+            // Hide the element after 10 seconds
+            setTimeout(function() {
+                AccessElement.style.display = 'none';
+            }, 5000);
+        }
+        
     }
   });
+
+
 
 Update();
 

@@ -28,7 +28,6 @@ camera.set(cv2.CAP_PROP_CONTRAST, 1)
 
 def decodeCam(image):
     cv2.namedWindow("Output", cv2.WINDOW_NORMAL) 
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     barcodes = pyzbar.decode(image)
     print('reading...', end='\r')
     rotated =cv2.rotate(image, cv2.ROTATE_180)

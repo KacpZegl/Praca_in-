@@ -3,6 +3,7 @@ from rpi_ws281x import *
 import neopixel
 import board
 import argparse
+import sys
 
 # LED strip configuration:
 LED_COUNT      = 22     # Number of LED pixels.
@@ -25,6 +26,9 @@ def loading(strip, wait_ms=50):
             time.sleep(0.001)
             strip.show()
     time.sleep(0.5)
+    sys.stdout.write("NOTcorrect")
+    sys.stdout.flush()
+    
     for i in range(LED_BRIGHTNESS, -1, -1):
         pixels.fill((255,i,i))
     time.sleep(2)

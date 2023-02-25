@@ -3,6 +3,6 @@
 const { ipcRenderer } = require('electron');
 
 ipcRenderer.on('python-data', (event, data) => {
-  console.log(data);
   // do something with the data...
+  window.postMessage({ type: 'python-data', data: data});
 });
