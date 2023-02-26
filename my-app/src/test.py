@@ -26,6 +26,8 @@ camera.set(cv2.CAP_PROP_CONTRAST, 1)
 # Initialize RFID reader
 reader = SimpleMFRC522()
 
+subprocess.call(["python", "/home/kacikor/Desktop/praca_inz/Praca_in-/my-app/src/led_clear.py"])
+
 # Define LED strip control functions
 def run_red():
     # data = "NOTcorrect"

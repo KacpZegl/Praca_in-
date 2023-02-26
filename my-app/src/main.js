@@ -27,8 +27,12 @@ function Update() {
 
 
 const noAccessElement = document.querySelector('#no-access');
+const noAccessText = document.querySelector('#no-access-text');
 const scanQRElement = document.querySelector('#scan-qr');
+const scanQRText = document.querySelector('#scan-qr-text');
 const AccessElement = document.querySelector('#access');
+const AccessText = document.querySelector('#access-text');
+const Arrow = document.querySelector('#arrow');
 
 window.addEventListener('message', (event) => {
     if (event.data.type === 'python-data') {
@@ -37,24 +41,34 @@ window.addEventListener('message', (event) => {
         if (data ===  "NOTcorrect"){
             // Display the element
             noAccessElement.style.display = 'block';
+            noAccessText.style.display = 'block';
             // Hide the element after 10 seconds
             setTimeout(function() {
                 noAccessElement.style.display = 'none';
+                noAccessText.style.display = 'none';
             }, 5000);
         }
         else if (data === "scan-qr"){
             scanQRElement.style.display = 'block';
+            scanQRText.style.display = 'block';
+            Arrow.style.display = 'block';
             // Hide the element after 10 seconds
             setTimeout(function() {
                 scanQRElement.style.display = 'none';
+                scanQRText.style.display = 'none';
+                Arrow.style.display = 'none';
             }, 20000);
         }
         else if (data === "correct"){
             scanQRElement.style.display = 'none';
+            scanQRText.style.display = 'none';
+            Arrow.style.display = 'none';
             AccessElement.style.display = 'block';
+            AccessText.style.display = 'block';
             // Hide the element after 10 seconds
             setTimeout(function() {
                 AccessElement.style.display = 'none';
+                AccessText.style.display = 'none';
             }, 5000);
         }
         

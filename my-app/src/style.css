@@ -4,6 +4,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    cursor: none;
 }
 
 body {
@@ -152,17 +153,19 @@ img {
 }
 
 #no-access{
-    margin-top: -700;
-    margin-left: 1200;
-    width: 400px;
+    position: absolute;
+    margin-top: -590;
+    margin-left: 900;
+    width: 600px;
     height: 600px;
     filter: invert(1);
     display: none;
 }
 
 #scan-qr{
-    margin-top: -700;
-    margin-left: 1200;
+    position: absolute;
+    margin-top: -620;
+    margin-left: 1000;
     width: 400px;
     height: 600px;
     filter: invert(1);
@@ -170,48 +173,60 @@ img {
 }
 
 #access{
-    margin-top: -700;
-    margin-left: 1200;
-    width: 400px;
+    position: absolute;
+    margin-top: -590;
+    margin-left: 900;
+    width: 600px;
     height: 600px;
     filter: invert(1);
-    display: block;
+    display: none;
 }
 
 #arrow{
-    margin-top: -700;
-    margin-left: 1200;
-    width: 400px;
-    height: 600px;
+    position: absolute;
+    margin-top: -160;
+    margin-left: 1100;
+    width: 200px;
+    height: 200px;
     filter: invert(1);
-    display: block;
+    display: none;
 
 }
 
 
 #no-access-text{
     position: absolute;
-    top: 700px;
-    left: 1200px;
+    text-align: center;
+    font-size: 70;
+    top: 990px;
+    left: 850px;
     margin: 0;
     color: white;
     z-index: 1;
+    display: none;
 }
 
 #access-text{
     position: absolute;
-    top: 700px;
-    left: 1200px;
+    text-align: center;
+    font-size: 70;
+    top: 990px;
+    left: 900px;
     margin: 0;
     color: white;
     z-index: 2;
+    display: none;
 }
 
 #scan-qr-text{
     position: absolute;
-    top: 700px;
-    left: 1200px;
+    text-align: center;
+    font-size: 70;
+    top: 550px;
+    left: 1400px;
+    right: 100px;
     margin: 0;
     color: white;
     z-index: 3;
+    display: none;
 }
